@@ -1,0 +1,22 @@
+// def Branch=main
+// def repoURL="https://github.com/Vishnutejakankanala/Maven-jenkins"
+// def MavenGoals="clean package"
+
+
+pipeline{
+    agent any
+    
+    stages {
+  stage('SCM') {
+    steps {
+      git branch: 'main', credentialsId: 'aws_git', url: 'https://github.com/Vishnutejakankanala/Maven-jenkins'
+    }
+  }
+
+  stage('Maven Buid') {
+    steps {
+      bat 'mvn clean'
+    }
+  }
+}
+}
