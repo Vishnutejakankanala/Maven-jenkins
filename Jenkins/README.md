@@ -58,8 +58,27 @@ New credentials -> kind(Secret text) -> Scope(Global (Jenkins, nodes, items, all
 
 To install Docker
 ````
+Go to VM and use root user (sudo su)
+apt install docker.io -y (To install docker)
+usermod -aG docker jenkins (To grant permission)
+usermod -aG docker ubuntu (To grant permission)
+systemctl restart docker (To restart docker)
+restart jenkins <ipaddress:8080/restart>.
+````
 
+To install ArgoCD
+````
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.28.0/install.sh | bash -s v0.28.0
+
+kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
+
+kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
+````
+
+In Jenkins add credentials
+````
 
 
 ````
+
 
