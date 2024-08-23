@@ -20,5 +20,5 @@ sudo apt-get install jenkins
 ````
 
 Go to Security Group in ec2-instance and add inbound rules [ all Traffic, ipv4 ].
-Copy and paste the <ipaddress:8080> in the new tab to get jenkins page.
+<Copy and paste the < ipaddress:8080 > in the new tab to get jenkins page>
 ps -ef | grep jenkins (to know ip address).
