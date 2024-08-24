@@ -77,8 +77,9 @@ kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
 
 In Jenkins add credentials
 ````
-
-
+In jenkins -> Manage jenkins -> Credentials -> System -> Global credentials (unrestricted) -> New credentials.
+New credentials -> kind(username with passwaod) -> username(vishnuteja09) -> password(DockerHub password) -> ID(docker-cred) -> create
+New credentials -> kind(Secret text) -> Secret(GitHub PAT) -> ID(GitHub) -> create.
 ````
 
 
