@@ -66,6 +66,15 @@ systemctl restart docker (To restart docker)
 restart jenkins <ipaddress:8080/restart>.
 ````
 
+In Jenkins add credentials
+````
+In jenkins -> Manage jenkins -> Credentials -> System -> Global credentials (unrestricted) -> New credentials.
+New credentials -> kind(username with passwaod) -> username(vishnuteja09) -> password(DockerHub password) -> ID(docker-cred) -> create
+New credentials -> kind(Secret text) -> Secret(GitHub PAT) -> ID(GitHub) -> create.
+Replace sonarqube <ipaddress> in jenkins file.
+Run the job in jenkins.
+````
+
 To install ArgoCD
 ````
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.28.0/install.sh | bash -s v0.28.0
@@ -73,13 +82,30 @@ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releas
 kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
 
 kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
+
+wait for some time and run commands
+kubectl get pods -n operators (To chech status running)
+rgoCD operator -> Usage ->  Basics -> copy code and create file [argocd-basic.yaml]
+kubectl apply -f argocd-basic.yaml (To execute yaml file)
+kubectl get pods (To check argocd workloads are getting createing)
+kubectl get svc (To check the services)
+kubectl edit svc example-argocd-server ( Change [type: Clusterip to NortPort ]
+kubectl get svc ( check Clusterip changes to NortPort)
+kubectl get nodes -o wide (To get External ip address)
+<external ip address:port no> past on new tab to log in to argocd.
+kubectl get secret (to get secrets)
+kubectl edit secret example-argocd-cluster ( copy admin.password)
+echo <password> | base64 --decode ( you will get argocd password)
+In ArgoCD -> username(admin) -> password(copy in cmd) -> To login to argocd.
+
+
+
+
+
 ````
 
-In Jenkins add credentials
-````
-In jenkins -> Manage jenkins -> Credentials -> System -> Global credentials (unrestricted) -> New credentials.
-New credentials -> kind(username with passwaod) -> username(vishnuteja09) -> password(DockerHub password) -> ID(docker-cred) -> create
-New credentials -> kind(Secret text) -> Secret(GitHub PAT) -> ID(GitHub) -> create.
-````
+
+
+
 
 
