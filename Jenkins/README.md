@@ -97,14 +97,15 @@ kubectl get secret (to get secrets)
 kubectl edit secret example-argocd-cluster ( copy admin.password)
 echo <password> | base64 --decode ( you will get argocd password)
 In ArgoCD -> username(admin) -> password(copy in cmd) -> To login to argocd.
-
-
-
-
-
 ````
 
-
+Login to the argoCD
+````
+Applications -> New app -> Application name(test) -> project name(default) -> sync(automatic)
+Source : Repository URL(github repo url) -> path(Deployment file path) -> cluster url -> Namespace(default) -> Create.
+kubectl get deploy (To check spring-boot-app deployed or not)
+kubectl get pods (To check spring-boot-app pods)
+````
 
 
 
